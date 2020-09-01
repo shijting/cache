@@ -10,10 +10,10 @@ import "time"
 4.为简化编程细节，无需实现数据落地。
 */
 type ICache interface {
-	//size 是⼀一个字符串串。⽀支持以下参数: 1KB，100KB，1MB，2MB 等
-	SetMaxMemory(size string)
+	//size 是⼀一个字符串串。⽀支持以下参数: 1KB，100KB，1MB，2MB,1GB 等
+	SetMaxMemory(size string) error
 	// 设置⼀个缓存项，并且在expire时间之后过期
-	Set(key string, val interface{}, exp time.Duration)
+	Set(key string, val interface{}, expire time.Duration) error
 	// 获取⼀个值
 	Get(key string) (interface{}, bool)
 	// 删除⼀个值
